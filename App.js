@@ -17,18 +17,55 @@ import {
   View,
 } from 'react-native';
 import ResturantInfo from './screens/App/resturant_info';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
 
+const Home = () => {
+  return <Text>Home</Text>
+}
+const setting = () =>{
+  return<Text>setting</Text>
+}
 
+
+const Tab = createBottomTabNavigator();
 
 const App = () => {
   
 
   return (
      
-      <View style = {styles.mainveiw}>
-        <ResturantInfo/>
+      <View style = {styles.mainveiw}> 
+            <NavigationContainer>
+              <Tab.Navigator
+              
+              screenOptions={({route})=>({
+                tabBarIcon: ({focused, color , size}) =>{
+                  let IconName;
+                  if(route.name ==='HOME'){
+                    IconName = focused ? 
+                    "home" :
+                    "home-outline"
+                  }else if (route.name === 'settings') {
+                    IconName = focused ?
+                     "settings" :
+                    "settings-outline"
+                  }
+                  return (   <Ionicons name={IconName} size={size} color={color} /> )
+                },
+                tabBarActiveTintColor: 'red',
+                tabBarInactiveTintColor: 'grey',
+              })}
+              
+              >
+                <Tab.Screen name = "HOME" component={Home}/>
+                <Tab.Screen name = "settings" component = {setting}/>
+              </Tab.Navigator>
+            </NavigationContainer>
+
       </View>
    
     );
