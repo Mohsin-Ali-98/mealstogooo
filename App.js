@@ -24,7 +24,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
 const Home = () => {
-  return <Text>Home</Text>
+  return <Text> hELLO  FROM Home</Text>
 }
 const setting = () =>{
   return<Text>setting</Text>
@@ -56,7 +56,7 @@ const App = () => {
                   }
                   return (   <Ionicons name={IconName} size={size} color={color} /> )
                 },
-                tabBarActiveTintColor: 'red',
+                tabBarActiveTintColor: 'blue',
                 tabBarInactiveTintColor: 'grey',
               })}
               
