@@ -22,9 +22,11 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
+import ResturantService from './services/resturants/resturant.service';
 
-const Home = () => {
-  return <Text> hELLO  FROM Home</Text>
+
+const Map = () => {
+  return <Text> hELLO  FROM MAP</Text>
 }
 const setting = () =>{
   return<Text>setting</Text>
@@ -37,23 +39,30 @@ const App = () => {
   
 
   return (
-     
-      <View style = {styles.mainveiw}> 
+     <SafeAreaView>
+         <View style = {styles.mainveiw}> 
             <NavigationContainer>
               <Tab.Navigator
               
               screenOptions={({route})=>({
                 tabBarIcon: ({focused, color , size}) =>{
                   let IconName;
-                  if(route.name ==='HOME'){
+                  if(route.name ==='Resturant'){
                     IconName = focused ? 
-                    "home" :
-                    "home-outline"
-                  }else if (route.name === 'settings') {
+                    "fast-food" :
+                    "fast-food-outline"
+                  }
+                  else if (route.name === 'settings') {
                     IconName = focused ?
                      "settings" :
                     "settings-outline"
                   }
+                  else if (route.name ==='Map'){
+                    IconName = focused ? 
+                    "md-map":
+                    "md-map-sharp"
+                  }
+                  
                   return (   <Ionicons name={IconName} size={size} color={color} /> )
                 },
                 tabBarActiveTintColor: 'blue',
@@ -61,12 +70,14 @@ const App = () => {
               })}
               
               >
-                <Tab.Screen name = "HOME" component={Home}/>
+                <Tab.Screen name = "Resturant" component={ResturantInfo}/>
+                <Tab.Screen name = "MAP" component={Map}/>
                 <Tab.Screen name = "settings" component = {setting}/>
               </Tab.Navigator>
             </NavigationContainer>
 
       </View>
+     </SafeAreaView>
    
     );
 };
