@@ -6,7 +6,7 @@ const ResturantService = (location = "43.653225,-79.383186") =>{
     return console.log(mocks)
 }
 
-export default ResturantService();
+export default ResturantService;
 
 //     const ResturantService = (location = "43.653225,-79.383186") =>{
 

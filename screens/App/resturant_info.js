@@ -17,7 +17,41 @@ import { Theme  } from '../../utils/theme/theme';
 
 const ResturantInfo = () => {
  
-  const DATA = [1,2,3,4,5]
+  const DATA = [ {
+    name : "Mcdonalds",
+    address:"123 street",
+    photos:[
+        "https://wlxaj1j3fea9rr7r20slpixw-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Fast-food-combo-meal.jpg"
+       ],
+    isOpen:false, 
+    rating:4,
+},
+{
+  name : "KFC",
+  address:"ABC street",
+  photos:[
+      "https://wlxaj1j3fea9rr7r20slpixw-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Fast-food-combo-meal.jpg"
+     ],
+  isOpen:false, 
+  rating:4,
+},{
+  name :"Pizza hut",
+  address:"Xyz street",
+  photos:[
+      "https://wlxaj1j3fea9rr7r20slpixw-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Fast-food-combo-meal.jpg"
+     ],
+  isOpen:false, 
+  rating:4,
+},{
+  name : "Shinwari",
+  address:"789 street",
+  photos:[
+      "https://wlxaj1j3fea9rr7r20slpixw-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Fast-food-combo-meal.jpg"
+     ],
+  isOpen:false, 
+  rating:4,
+},
+]
 
 
   const CardRender = () =>{
@@ -36,6 +70,7 @@ const ResturantInfo = () => {
             data={DATA}
             renderItem={CardRender}
             keyExtractor={(item) => item.name}
+              // , item.address,item.photos,item.isOpen,item.rating}
             />
           </View>
         </View>
