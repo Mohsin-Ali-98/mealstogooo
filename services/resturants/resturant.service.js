@@ -1,29 +1,38 @@
 import {mocks} from "./mock";
+import camalize from "camelize"
  
 
+export const ResturantService = (location = "43.653225,-79.383186") =>{
 
-const ResturantService = (location = "43.653225,-79.383186") =>{
-    return console.log(mocks)
-}
+        return (
+            new Promise ((resolve , reject ) =>{
+                const mock = mocks[location]
+                if(!mock){
+                    reject["not found"]
+                }
+                resolve[mock]
+            })
+        )
+ }
+ export const ResturantDataAdd = ({result = []}) => {
 
-export default ResturantService;
+    const AddedData = result.map((resturant)=>{
+        return{
+            ...resturant,
+            isOpen:resturant.opening_hours && restaurant.opening_hours.open_now,
+            isClosed: resturant.business_status === "CLOSED_TEMPORARILY"
 
-//     const ResturantService = (location = "43.653225,-79.383186") =>{
+        }
+    })
 
-//         return (
-//             new Promise ((resolve , reject ) =>{
-//                 const mock = mocks[location]
-//                 if(!mock){
-//                     reject["not found"]
-//                 }
-//                 resolve[mock]
-//             })
-//         )
-//  }
+    return camalize(AddedData)
 
+ }
 
-//  export default ResturantService().then((result)=>{
-//      console.log(result)
-//  }).catch((err)=>{
-//      console.log(err)
-//  });
+ ResturantService () 
+ .then(ResturantDataAdd)
+ .then((transformedData)=>{
+     console.log(transformedData)
+ }).catch((err)=>{
+    console.log(err)
+});

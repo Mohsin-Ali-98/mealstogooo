@@ -23,6 +23,8 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
 import ResturantService from './services/resturants/resturant.service';
+import ResturantContextProvider from "../mealstogooo/services/resturants/resturant.context"
+
 
 
 const Map = () => {
@@ -41,7 +43,8 @@ const App = () => {
   return (
      <SafeAreaView>
          <View style = {styles.mainveiw}> 
-            <NavigationContainer>
+         {/* <ResturantContextProvider> */}
+         <NavigationContainer>
               <Tab.Navigator
               
               screenOptions={({route})=>({
@@ -75,6 +78,7 @@ const App = () => {
                 <Tab.Screen name = "settings" component = {setting}/>
               </Tab.Navigator>
             </NavigationContainer>
+         {/* </ResturantContextProvider> */}
 
       </View>
      </SafeAreaView>

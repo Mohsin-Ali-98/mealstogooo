@@ -1,4 +1,4 @@
-import React , {useState} from 'react';
+import React , {useState,useContext} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -13,6 +13,8 @@ import {
 import ResturantCard from '../../components/minorcomponents/resturant_card/resturant_card';
 import SearchBar from '../../components/minorcomponents/searchbar/searchbar';
 import { Theme  } from '../../utils/theme/theme';
+import {ResturantContext} from '../../services/resturants/resturant.context'
+
 
 
 const ResturantInfo = () => {
@@ -54,15 +56,19 @@ const ResturantInfo = () => {
 ]
 
 
+  // const DATA = [1]
+
   const CardRender = () =>{
     return (<ResturantCard/>)
   }
 
+//  ResturantContext= useContext(ResturantContext)
+
  return (
      
         <View style = {styles.mainveiw}>
-          <View style={styles.searchveiw}>
             <SearchBar/>
+          <View style={styles.searchveiw}>
           </View>
           <View style= {styles.Infoveiw}>
             {/* <ResturantCard/> */}

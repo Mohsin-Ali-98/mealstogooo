@@ -28,11 +28,12 @@ const ResturantCard = (props) => {
     //        ],
     //     isOpen=false, 
     //     rating=4,
+    //      isClosed=false
     // } = resturantinfo
 
 
     // const ArrayRating = Array.from(rating)
-    const ArrayRating = Array.from(new Array(Math.floor(props.rating)))
+    const ArrayRating = Array.from( Array(Math.ceil(props.rating)))
 
 
     return(
