@@ -33,7 +33,7 @@ const ResturantCard = (props) => {
 
 
     // const ArrayRating = Array.from(rating)
-    const ArrayRating = Array.from( Array(Math.ceil(props.rating)))
+    const ArrayRating = Array.from( Array(Math.ceil(4 )))
 
 
     return(
@@ -41,7 +41,7 @@ const ResturantCard = (props) => {
 
             <View style= {styles.imgview}>
 
-            <Image source={{uri: props.photos[0]}}
+            <Image source={{uri: props.photos}}
                 style={{height:"100%", width:"100%",borderRadius:20}}
             />
                  

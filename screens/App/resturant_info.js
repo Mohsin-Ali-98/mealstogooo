@@ -14,6 +14,7 @@ import ResturantCard from '../../components/minorcomponents/resturant_card/restu
 import SearchBar from '../../components/minorcomponents/searchbar/searchbar';
 import { Theme  } from '../../utils/theme/theme';
 import {ResturantContext} from '../../services/resturants/resturant.context'
+import { DrawerActions } from '@react-navigation/native';
 
 
 
@@ -22,34 +23,34 @@ const ResturantInfo = () => {
   const DATA = [ {
     name : "Mcdonalds",
     address:"123 street",
-    photos:[
-        "https://wlxaj1j3fea9rr7r20slpixw-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Fast-food-combo-meal.jpg"
-       ],
-    isOpen:false, 
+    photos:
+      "https://wlxaj1j3fea9rr7r20slpixw-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Fast-food-combo-meal.jpg"
+     ,
+    isOpen:true, 
     rating:4,
 },
 {
   name : "KFC",
   address:"ABC street",
-  photos:[
+  photos:
       "https://wlxaj1j3fea9rr7r20slpixw-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Fast-food-combo-meal.jpg"
-     ],
-  isOpen:false, 
+     ,
+  isOpen:true, 
   rating:4,
 },{
   name :"Pizza hut",
   address:"Xyz street",
-  photos:[
+  photos:
       "https://wlxaj1j3fea9rr7r20slpixw-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Fast-food-combo-meal.jpg"
-     ],
+     ,
   isOpen:false, 
   rating:4,
 },{
   name : "Shinwari",
   address:"789 street",
-  photos:[
+  photos:
       "https://wlxaj1j3fea9rr7r20slpixw-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Fast-food-combo-meal.jpg"
-     ],
+     ,
   isOpen:false, 
   rating:4,
 },
@@ -58,8 +59,15 @@ const ResturantInfo = () => {
 
   // const DATA = [1]
 
-  const CardRender = () =>{
-    return (<ResturantCard/>)
+  const CardRender = (item) =>{
+    return (<ResturantCard
+      name={item.name}
+      address={item.address}
+      photos={item.photos}
+      isOpen={item.isOpen}
+      rating={item.rating}
+
+    />)
   }
 
 //  ResturantContext= useContext(ResturantContext)
