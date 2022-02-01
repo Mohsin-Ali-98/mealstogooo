@@ -60,28 +60,29 @@ const ResturantInfo = () => {
 const [name,setname]=useState('')
 const[address,setaddress]=useState('')
 const[rating,setrating] = useState(0)
-const[resturants,setresturants]=useState[DATA]
+const[resturants,setresturants]=useState([DATA])
 
 
 
-const updatename = (i) =>{
-      setname(i)
+const updatename = (n) =>{
+      setname(n)
 }
-const updateaddress = (i) =>{
-  setaddress(i)
+const updateaddress = (a) =>{
+  setaddress(a)
 }
-const updaterating = (i) =>{
-  setrating(i)
+const updaterating = (r) =>{
+  setrating(r)
 }
 
 
 const RegisterResturant = () =>{
   if(name!="" && address!= "" && rating!=0){
-    DATA.push({name:name},{address:address},{rating:rating})
-    setresturants=([...DATA],{name:name},{address:address},{rating:rating})
+    DATA.push({name:name,address:address,rating:rating})
+    setresturants([...DATA],{name:name,address:address,rating:rating})
     setname('')
     setaddress('')
     setrating(0)
+    console.log(resturants)
 
   }
 }
@@ -96,6 +97,7 @@ const RegisterResturant = () =>{
       rating={item.rating}
 
     />)
+
   }
 
 //  ResturantContext= useContext(ResturantContext)
@@ -117,7 +119,7 @@ const RegisterResturant = () =>{
              placeholder='Enter resturant address'
              placeholderTextColor={"black"}
              style={styles.inputfield}
-             onChangeText={(e)=>updateaddress(e)}
+             onChangeText={(f)=>updateaddress(f)}
               />
            
 
@@ -128,7 +130,7 @@ const RegisterResturant = () =>{
               placeholderTextColor={"black"}
               style={styles.inputfield}
               keyboardType='numeric'
-              onChangeText={(e)=>updaterating(e)}
+              onChangeText={(g)=>updaterating(g)}
               />
             
 
@@ -145,7 +147,7 @@ const RegisterResturant = () =>{
           </View>
           <View style= {styles.Infoveiw}>
             <FlatList
-            data={resturants}
+            data={DATA}
             renderItem={ CardRender}
             keyExtractor={(item) => item.name}
             />

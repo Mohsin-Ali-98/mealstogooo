@@ -15,24 +15,54 @@ import { Theme } from '../../../utils/theme/theme';
 
 const SearchBar = () => {
 
-  const [text, settext] = ("")
+
+  const [name,setname]=useState('')
+  const[address,setaddress]=useState('')
+  const[rating,setrating] = useState(0)
+
+
+  
+const updatename = (n) =>{
+  setname(n)
+}
+const updateaddress = (a) =>{
+setaddress(a)
+}
+const updaterating = (r) =>{
+setrating(r)
+}
+
 
 
   return (
     <SafeAreaView>
       <View style={style.mainveiw}>
-      <View style={style.icon}>
-        <Icon icon="search" size={40} color="grey" />
-      </View>
-      <View style={style.input}>
-        <TextInput color={Theme.colors.text.primary}
-          placeholder='Enter name of resturant'
-          placeholderTextColor="black"
-        />
-      </View>
-      <Text>
-        {text}
-      </Text>
+      <TextInput
+              placeholder='Enter resturant name'
+              placeholderTextColor={"black"}
+              style={style.inputfield}
+              onChangeText={(e)=>updatename(e)}
+              />
+           
+           
+            
+              <TextInput
+             placeholder='Enter resturant address'
+             placeholderTextColor={"black"}
+             style={style.inputfield}
+             onChangeText={(f)=>updateaddress(f)}
+              />
+           
+
+              
+           
+              <TextInput
+              placeholder='Enter rating '
+              placeholderTextColor={"black"}
+              style={style.inputfield}
+              keyboardType='numeric'
+              onChangeText={(g)=>updaterating(g)}
+              />
     </View>
     </SafeAreaView>
   )
@@ -48,6 +78,18 @@ const style = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "flex-start",
     alignItems: "center",
+  },
+
+  inputfield:{
+    height: "20%",
+    width: "100%",
+    backgroundColor: Theme.colors.bg.secondary,
+    borderRadius: 20,
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "center",
+    marginTop:0,
+    color:"black",
   },
   icon: {
     marginLeft: 10
