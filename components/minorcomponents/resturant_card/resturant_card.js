@@ -20,20 +20,8 @@ import closed from '../../../assets/icons/closed';
 const windowHeight = Dimensions.get('window').height;
 const ResturantCard = (props) => {
   
-    // const {
-    //     name = "Mcdonalds",
-    //     address="123 street",
-    //     photos=[
-    //         "https://wlxaj1j3fea9rr7r20slpixw-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Fast-food-combo-meal.jpg"
-    //        ],
-    //     isOpen=false, 
-    //     rating=4,
-    //      isClosed=false
-    // } = resturantinfo
 
-
-    // const ArrayRating = Array.from(rating)
-    const ArrayRating = Array.from( Array(Math.ceil(4 )))
+    const ArrayRating = Array.from( Array(Math.ceil(props.rating)))
 
 
     return(

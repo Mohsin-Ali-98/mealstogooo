@@ -1,4 +1,4 @@
-import React , {useState} from 'react';
+import React, { useState } from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -13,40 +13,48 @@ import {
 import Icon from 'react-native-vector-icons/AntDesign';
 import { Theme } from '../../../utils/theme/theme';
 
-const SearchBar = () =>{
-  
-    const[text,settext] = ("")
+const SearchBar = () => {
+
+  const [text, settext] = ("")
 
 
-    return (                                                                                                                          
-        <View style = {style.mainveiw}>
-          <View style={style.icon}>
-            <Icon icon="search" size={40} color="grey" />
-          </View>
-          <View style ={style.input}>
-          <TextInput color={Theme.colors.text.primary}/>
-          </View>
-        </View>
-    )
+  return (
+    <SafeAreaView>
+      <View style={style.mainveiw}>
+      <View style={style.icon}>
+        <Icon icon="search" size={40} color="grey" />
+      </View>
+      <View style={style.input}>
+        <TextInput color={Theme.colors.text.primary}
+          placeholder='Enter name of resturant'
+          placeholderTextColor="black"
+        />
+      </View>
+      <Text>
+        {text}
+      </Text>
+    </View>
+    </SafeAreaView>
+  )
 }
 
 const style = StyleSheet.create({
-  mainveiw:{
-    height:"90%",
-    width:"90%",
-    backgroundColor:Theme.colors.bg.secondary,
-    marginTop:2,
-    borderRadius:20,
-    flexDirection:"row",
-    justifyContent:"flex-start",
-    alignItems:"center",
+  mainveiw: {
+    height: "100%",
+    width: "100%",
+    backgroundColor: Theme.colors.bg.secondary,
+    marginTop: 2,
+    borderRadius: 20,
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "center",
   },
-  icon:{
-    marginLeft:10
+  icon: {
+    marginLeft: 10
   },
-  input:{
-    marginLeft:10,
-    width:"100%"
+  input: {
+    marginLeft: 10,
+    width: "100%"
   }
 })
 

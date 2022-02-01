@@ -8,7 +8,8 @@ import {
   useColorScheme,
   View,
   TextInput,
-  FlatList
+  FlatList,
+  TouchableOpacity
 } from 'react-native';
 import ResturantCard from '../../components/minorcomponents/resturant_card/resturant_card';
 import SearchBar from '../../components/minorcomponents/searchbar/searchbar';
@@ -56,10 +57,37 @@ const ResturantInfo = () => {
 },
 ]
 
+const [name,setname]=useState('')
+const[address,setaddress]=useState('')
+const[rating,setrating] = useState(0)
+const[resturants,setresturants]=useState[DATA]
 
-  // const DATA = [1]
 
-  const CardRender = (item) =>{
+
+const updatename = (i) =>{
+      setname(i)
+}
+const updateaddress = (i) =>{
+  setaddress(i)
+}
+const updaterating = (i) =>{
+  setrating(i)
+}
+
+
+const RegisterResturant = () =>{
+  if(name!="" && address!= "" && rating!=0){
+    DATA.push({name:name},{address:address},{rating:rating})
+    setresturants=([...DATA],{name:name},{address:address},{rating:rating})
+    setname('')
+    setaddress('')
+    setrating(0)
+
+  }
+}
+
+
+  const CardRender = ({item}) =>{
     return (<ResturantCard
       name={item.name}
       address={item.address}
@@ -73,21 +101,57 @@ const ResturantInfo = () => {
 //  ResturantContext= useContext(ResturantContext)
 
  return (
-     
-        <View style = {styles.mainveiw}>
-            <SearchBar/>
-          <View style={styles.searchveiw}>
+     <SafeAreaView>
+         <View style = {styles.mainveiw}>
+          <View style={styles.Inputveiw}>
+              <TextInput
+              placeholder='Enter resturant name'
+              placeholderTextColor={"black"}
+              style={styles.inputfield}
+              onChangeText={(e)=>updatename(e)}
+              />
+           
+           
+            
+              <TextInput
+             placeholder='Enter resturant address'
+             placeholderTextColor={"black"}
+             style={styles.inputfield}
+             onChangeText={(e)=>updateaddress(e)}
+              />
+           
+
+              
+           
+              <TextInput
+              placeholder='Enter rating '
+              placeholderTextColor={"black"}
+              style={styles.inputfield}
+              keyboardType='numeric'
+              onChangeText={(e)=>updaterating(e)}
+              />
+            
+
+
+            <View style={styles.registerbtn}>
+            
+            <TouchableOpacity
+            onPress={()=>RegisterResturant()}
+            >
+              <Text>Register</Text>
+            </TouchableOpacity>
+            </View>
+
           </View>
           <View style= {styles.Infoveiw}>
-            {/* <ResturantCard/> */}
             <FlatList
-            data={DATA}
-            renderItem={CardRender}
+            data={resturants}
+            renderItem={ CardRender}
             keyExtractor={(item) => item.name}
-              // , item.address,item.photos,item.isOpen,item.rating}
             />
           </View>
         </View>
+     </SafeAreaView>
       
      
       );
@@ -99,19 +163,49 @@ const ResturantInfo = () => {
      width:"100%",
      backgroundColor:Theme.colors.bg.primary,
      alignItems:"center",
-     justifyContent:"center"
+     justifyContent:"center",
    },
-   searchveiw:{
-    height:"10%",
+   Inputveiw:{
+    height:"50%",
     width:"100%",
     backgroundColor:Theme.colors.bg.primary,
-    alignItems:"center"
+    alignItems:"center",
+    justifyContent:"space-evenly",
   },
+
+  inputfield:{
+    height: "20%",
+    width: "100%",
+    backgroundColor: Theme.colors.bg.secondary,
+    borderRadius: 20,
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "center",
+    marginTop:0,
+    color:"black",
+  },
+  registerbtn:{
+    height:"10%",
+    width:"20%",
+    backgroundColor:"blue",
+    borderRadius:20,
+    marginTop:10,
+    alignItems:"center",
+    justifyContent:"center"
+  },
+
+  textview:{
+    color:"black"
+  },
+
   Infoveiw:{
-      height:"100%",
+      height:"50%",
       width:"100%",
       backgroundColor:Theme.colors.bg.primary,
       alignItems:"center",
+      // alignSelf:"center",
+      marginLeft:20
+      
   }
   
 })  

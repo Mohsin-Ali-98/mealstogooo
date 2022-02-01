@@ -46,8 +46,11 @@ const App = () => {
          {/* <ResturantContextProvider> */}
          <NavigationContainer>
               <Tab.Navigator
+
+              
               
               screenOptions={({route})=>({
+                headerShown:false,
                 tabBarIcon: ({focused, color , size}) =>{
                   let IconName;
                   if(route.name ==='Resturant'){
@@ -69,11 +72,14 @@ const App = () => {
                   return (   <Ionicons name={IconName} size={size} color={color} /> )
                 },
                 tabBarActiveTintColor: 'blue',
+               
                 tabBarInactiveTintColor: 'grey',
+
+               
               })}
               
               >
-                <Tab.Screen name = "Resturant" component={ResturantInfo}/>
+                <Tab.Screen name = "resturant" component={ResturantInfo} />
                 <Tab.Screen name = "MAP" component={Map}/>
                 <Tab.Screen name = "settings" component = {setting}/>
               </Tab.Navigator>
