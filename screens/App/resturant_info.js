@@ -77,8 +77,30 @@ const updaterating = (r) =>{
 
 const RegisterResturant = () =>{
   if(name!="" && address!= "" && rating!=0){
-    DATA.push({name:name,address:address,rating:rating})
-    setresturants([...DATA],{name:name,address:address,rating:rating})
+   
+   
+    DATA.push(
+      {
+        
+        name:name,
+        address:address,
+        photos:"https://wlxaj1j3fea9rr7r20slpixw-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Fast-food-combo-meal.jpg",
+        isOpen:true, 
+        rating:rating,
+        
+      }
+     
+    )
+
+
+    // setresturants([...DATA,{
+    //   name:name,
+    //   address:address,
+    //   rating:rating,
+    //   photos:"https://wlxaj1j3fea9rr7r20slpixw-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Fast-food-combo-meal.jpg",
+    //   isOpen:true, 
+    // }])
+    setresturants(DATA)
     setname('')
     setaddress('')
     setrating(0)
@@ -133,6 +155,12 @@ const RegisterResturant = () =>{
               onChangeText={(g)=>updaterating(g)}
               />
             
+
+            {/* <SearchBar
+            name={name} setname={setname}
+            address={address} setaddress={setaddress}
+            rating={rating} setrating={setrating}
+            /> */}
 
 
             <View style={styles.registerbtn}>
