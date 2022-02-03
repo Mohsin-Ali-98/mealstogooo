@@ -13,26 +13,10 @@ import {
 import Icon from 'react-native-vector-icons/AntDesign';
 import { Theme } from '../../../utils/theme/theme';
 
-const SearchBar = () => {
+const SearchBar = (props) => {
 
 
-  const [name,setname]=useState('')
-  const[address,setaddress]=useState('')
-  const[rating,setrating] = useState(0)
-
-
-  
-const updatename = (n) =>{
-  setname(n)
-}
-const updateaddress = (a) =>{
-setaddress(a)
-}
-const updaterating = (r) =>{
-setrating(r)
-}
-
-
+// PROPS TOU CHANGE NHI HOTI CHILD ME UNLESS IN ARRAT OR SET IN A NEW STATE
 
   return (
     <SafeAreaView>
@@ -41,7 +25,7 @@ setrating(r)
               placeholder='Enter resturant name'
               placeholderTextColor={"black"}
               style={style.inputfield}
-              onChangeText={(e)=>updatename(e)}
+              onChangeText={(a)=>props.stateupdate(a)}
               />
            
            
@@ -50,7 +34,7 @@ setrating(r)
              placeholder='Enter resturant address'
              placeholderTextColor={"black"}
              style={style.inputfield}
-             onChangeText={(f)=>updateaddress(f)}
+             onChangeText={(b)=>props.stateupdate(b)}
               />
            
 
@@ -61,7 +45,7 @@ setrating(r)
               placeholderTextColor={"black"}
               style={style.inputfield}
               keyboardType='numeric'
-              onChangeText={(g)=>updaterating(g)}
+              onChangeText={(c)=>props.stateupdate(c)}
               />
     </View>
     </SafeAreaView>
@@ -70,14 +54,13 @@ setrating(r)
 
 const style = StyleSheet.create({
   mainveiw: {
-    height: "100%",
+    height: "90%",
     width: "100%",
     backgroundColor: Theme.colors.bg.secondary,
     marginTop: 2,
     borderRadius: 20,
-    flexDirection: "row",
-    justifyContent: "flex-start",
-    alignItems: "center",
+    justifyContent: "space-evenly",
+    alignItems: "flex-start",
   },
 
   inputfield:{
@@ -87,8 +70,7 @@ const style = StyleSheet.create({
     borderRadius: 20,
     flexDirection: "row",
     justifyContent: "flex-start",
-    alignItems: "center",
-    marginTop:0,
+    alignItems:"center",
     color:"black",
   },
   icon: {

@@ -60,20 +60,28 @@ const ResturantInfo = () => {
 const [name,setname]=useState('')
 const[address,setaddress]=useState('')
 const[rating,setrating] = useState(0)
-const[resturants,setresturants]=useState([DATA])
+const[resturants,setresturants]=useState(DATA)
 
 
 
-const updatename = (n) =>{
-      setname(n)
+// const updatename = (n) =>{
+//       setname(n)
+// }
+// const updateaddress = (a) =>{
+//   setaddress(a)
+// }
+// const updaterating = (r) =>{
+//   setrating(r)
+// }
+
+
+
+
+const UpdateText = (i, j ,k) =>{
+  setname(i)
+  setaddress(false , j)
+  setrating(false ,false , k)
 }
-const updateaddress = (a) =>{
-  setaddress(a)
-}
-const updaterating = (r) =>{
-  setrating(r)
-}
-
 
 const RegisterResturant = () =>{
   if(name!="" && address!= "" && rating!=0){
@@ -93,18 +101,20 @@ const RegisterResturant = () =>{
     )
 
 
-    // setresturants([...DATA,{
+    // setresturants( DATA => [...DATA,{
     //   name:name,
     //   address:address,
     //   rating:rating,
     //   photos:"https://wlxaj1j3fea9rr7r20slpixw-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Fast-food-combo-meal.jpg",
     //   isOpen:true, 
     // }])
+
+
     setresturants(DATA)
     setname('')
     setaddress('')
     setrating(0)
-    console.log(resturants)
+    console.log(DATA)
 
   }
 }
@@ -128,7 +138,7 @@ const RegisterResturant = () =>{
      <SafeAreaView>
          <View style = {styles.mainveiw}>
           <View style={styles.Inputveiw}>
-              <TextInput
+              {/* <TextInput
               placeholder='Enter resturant name'
               placeholderTextColor={"black"}
               style={styles.inputfield}
@@ -154,13 +164,11 @@ const RegisterResturant = () =>{
               keyboardType='numeric'
               onChangeText={(g)=>updaterating(g)}
               />
-            
+             */}
 
-            {/* <SearchBar
-            name={name} setname={setname}
-            address={address} setaddress={setaddress}
-            rating={rating} setrating={setrating}
-            /> */}
+            <SearchBar
+            stateupdate={UpdateText}
+            />
 
 
             <View style={styles.registerbtn}>
@@ -175,7 +183,7 @@ const RegisterResturant = () =>{
           </View>
           <View style= {styles.Infoveiw}>
             <FlatList
-            data={DATA}
+            data={resturants}
             renderItem={ CardRender}
             keyExtractor={(item) => item.name}
             />
@@ -200,7 +208,7 @@ const RegisterResturant = () =>{
     width:"100%",
     backgroundColor:Theme.colors.bg.primary,
     alignItems:"center",
-    justifyContent:"space-evenly",
+    justifyContent:"space-around",
   },
 
   inputfield:{
