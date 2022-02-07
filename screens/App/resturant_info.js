@@ -216,7 +216,7 @@ const RegisterResturant = () =>{
     justifyContent:"space-around",
   },
   registerbtn:{
-    height:"15%",
+    height:"13%",
     width:"20%",
     backgroundColor:"blue",
     borderRadius:20,
