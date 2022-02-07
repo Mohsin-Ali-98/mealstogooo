@@ -11,55 +11,58 @@ import {
   FlatList,
   TouchableOpacity
 } from 'react-native';
+
+import {Picker} from '@react-native-picker/picker';
+import RadioForm from 'react-native-simple-radio-button';
+
 import ResturantCard from '../../components/minorcomponents/resturant_card/resturant_card';
 import SearchBar from '../../components/minorcomponents/searchbar/searchbar';
 import { Theme  } from '../../utils/theme/theme';
-import {ResturantContext} from '../../services/resturants/resturant.context'
-import { DrawerActions } from '@react-navigation/native';
 
 
-
-const ResturantInfo = () => {
- 
-  const DATA = [ {
-    name : "Mcdonalds",
-    address:"123 street",
-    photos:
-      "https://wlxaj1j3fea9rr7r20slpixw-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Fast-food-combo-meal.jpg"
-     ,
-    isOpen:true, 
-    rating:4,
-},
-{
-  name : "KFC",
-  address:"ABC street",
+const DATA = [ {
+  name : "Mcdonalds",
+  address:"123 street",
   photos:
-      "https://wlxaj1j3fea9rr7r20slpixw-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Fast-food-combo-meal.jpg"
-     ,
+    "https://wlxaj1j3fea9rr7r20slpixw-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Fast-food-combo-meal.jpg"
+   ,
   isOpen:true, 
   rating:4,
+},
+{
+name : "KFC",
+address:"ABC street",
+photos:
+    "https://wlxaj1j3fea9rr7r20slpixw-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Fast-food-combo-meal.jpg"
+   ,
+isOpen:true, 
+rating:4,
 },{
-  name :"Pizza hut",
-  address:"Xyz street",
-  photos:
-      "https://wlxaj1j3fea9rr7r20slpixw-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Fast-food-combo-meal.jpg"
-     ,
-  isOpen:false, 
-  rating:4,
+name :"Pizza hut",
+address:"Xyz street",
+photos:
+    "https://wlxaj1j3fea9rr7r20slpixw-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Fast-food-combo-meal.jpg"
+   ,
+isOpen:false, 
+rating:4,
 },{
-  name : "Shinwari",
-  address:"789 street",
-  photos:
-      "https://wlxaj1j3fea9rr7r20slpixw-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Fast-food-combo-meal.jpg"
-     ,
-  isOpen:false, 
-  rating:4,
+name : "Shinwari",
+address:"789 street",
+photos:
+    "https://wlxaj1j3fea9rr7r20slpixw-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Fast-food-combo-meal.jpg"
+   ,
+isOpen:false, 
+rating:4,
 },
 ]
 
+const ResturantInfo = () => {
+ 
+  
 const [name,setname]=useState('')
 const[address,setaddress]=useState('')
 const[rating,setrating] = useState(0)
+const[status,setstatus]=useState(null)
 const[resturants,setresturants]=useState(DATA)
 
 
@@ -77,11 +80,32 @@ const[resturants,setresturants]=useState(DATA)
 
 
 
-const UpdateText = (i, j ,k) =>{
+const UpdateText = (i, j) =>{
+  if(i)
   setname(i)
-  setaddress(false , j)
-  setrating(false ,false , k)
+  if(j)
+  setaddress(j)
 }
+
+
+const UpdateRating = (a) =>{
+  setrating(a)
+}
+
+
+
+const Open = () =>{
+  setstatus(true)
+}
+
+const Closed = () =>{
+  setstatus(false)
+}
+// var radio_props =[
+//   {label:"Open" , value:true},
+//   {label:"Closed" , value:false}
+// ]
+
 
 const RegisterResturant = () =>{
   if(name!="" && address!= "" && rating!=0){
@@ -93,7 +117,7 @@ const RegisterResturant = () =>{
         name:name,
         address:address,
         photos:"https://wlxaj1j3fea9rr7r20slpixw-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Fast-food-combo-meal.jpg",
-        isOpen:true, 
+        isOpen:status, 
         rating:rating,
         
       }
@@ -105,17 +129,21 @@ const RegisterResturant = () =>{
     //   name:name,
     //   address:address,
     //   rating:rating,
-    //   photos:"https://wlxaj1j3fea9rr7r20slpixw-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Fast-food-combo-meal.jpg",
+    //   photos:"",
     //   isOpen:true, 
     // }])
 
+    console.log(DATA)
 
     setresturants(DATA)
     setname('')
     setaddress('')
     setrating(0)
-    console.log(DATA)
+    setstatus(null)
 
+  }
+  else{
+    alert("Fields empty")
   }
 }
 
@@ -138,46 +166,23 @@ const RegisterResturant = () =>{
      <SafeAreaView>
          <View style = {styles.mainveiw}>
           <View style={styles.Inputveiw}>
-              {/* <TextInput
-              placeholder='Enter resturant name'
-              placeholderTextColor={"black"}
-              style={styles.inputfield}
-              onChangeText={(e)=>updatename(e)}
-              />
-           
-           
-            
-              <TextInput
-             placeholder='Enter resturant address'
-             placeholderTextColor={"black"}
-             style={styles.inputfield}
-             onChangeText={(f)=>updateaddress(f)}
-              />
-           
-
-              
-           
-              <TextInput
-              placeholder='Enter rating '
-              placeholderTextColor={"black"}
-              style={styles.inputfield}
-              keyboardType='numeric'
-              onChangeText={(g)=>updaterating(g)}
-              />
-             */}
 
             <SearchBar
             stateupdate={UpdateText}
-            />
-
+            name={name}
+            rate={rating}
+            address={address}
+            rating={rating}
+            PickRating={UpdateRating}
+            status={status}
+            Openstatus={Open}
+            ClosedStatus={Closed}
+            /> 
 
             <View style={styles.registerbtn}>
-            
-            <TouchableOpacity
-            onPress={()=>RegisterResturant()}
-            >
-              <Text>Register</Text>
-            </TouchableOpacity>
+               <TouchableOpacity onPress={()=>RegisterResturant()}>
+                   <Text>Register</Text>
+                </TouchableOpacity>
             </View>
 
           </View>
@@ -204,32 +209,20 @@ const RegisterResturant = () =>{
      justifyContent:"center",
    },
    Inputveiw:{
-    height:"50%",
+    height:"60%",
     width:"100%",
     backgroundColor:Theme.colors.bg.primary,
     alignItems:"center",
     justifyContent:"space-around",
   },
-
-  inputfield:{
-    height: "20%",
-    width: "100%",
-    backgroundColor: Theme.colors.bg.secondary,
-    borderRadius: 20,
-    flexDirection: "row",
-    justifyContent: "flex-start",
-    alignItems: "center",
-    marginTop:0,
-    color:"black",
-  },
   registerbtn:{
-    height:"10%",
+    height:"15%",
     width:"20%",
     backgroundColor:"blue",
     borderRadius:20,
     marginTop:10,
     alignItems:"center",
-    justifyContent:"center"
+    justifyContent:"center",
   },
 
   textview:{
@@ -237,7 +230,7 @@ const RegisterResturant = () =>{
   },
 
   Infoveiw:{
-      height:"50%",
+      height:"40%",
       width:"100%",
       backgroundColor:Theme.colors.bg.primary,
       alignItems:"center",
