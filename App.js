@@ -5,7 +5,7 @@
  * @format
  * @flow strict-local
  */
-
+import 'react-native-gesture-handler';
 import React from 'react';
 import {
   SafeAreaView,
@@ -16,17 +16,27 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-import ResturantInfo from './screens/App/resturant_info';
+
+
+
+import ResturantInfo from './screens/App/resturant_signup';
 import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
 import ResturantService from './services/resturants/resturant.service';
 import ResturantContextProvider from "../mealstogooo/services/resturants/resturant.context"
+import ResturantSignup from './screens/App/resturant_signup';
+import ResturantList from './screens/App/resturantlist';
+import { Theme  } from './utils/theme/theme';
 
 
-
+const Home = () =>{
+  return <Text>Hello FROM HOME</Text>
+}
 const Map = () => {
   return <Text> hELLO  FROM MAP</Text>
 }
@@ -35,7 +45,7 @@ const setting = () =>{
 }
 
 
-const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
 const App = () => {
   
@@ -43,48 +53,31 @@ const App = () => {
   return (
      <SafeAreaView>
          <View style = {styles.mainveiw}> 
-         {/* <ResturantContextProvider> */}
          <NavigationContainer>
-              <Tab.Navigator
-
-              
-              
-              screenOptions={({route})=>({
-                headerShown:false,
-                tabBarIcon: ({focused, color , size}) =>{
-                  let IconName;
-                  if(route.name ==='Resturant'){
-                    IconName = focused ? 
-                    "fast-food" :
-                    "fast-food-outline"
-                  }
-                  else if (route.name === 'settings') {
-                    IconName = focused ?
-                     "settings" :
-                    "settings-outline"
-                  }
-                  else if (route.name ==='Map'){
-                    IconName = focused ? 
-                    "md-map":
-                    "md-map-sharp"
-                  }
-                  
-                  return (   <Ionicons name={IconName} size={size} color={color} /> )
-                },
-                tabBarActiveTintColor: 'blue',
-               
-                tabBarInactiveTintColor: 'grey',
-
-               
-              })}
-              
-              >
-                <Tab.Screen name = "resturant" component={ResturantInfo} />
-                <Tab.Screen name = "MAP" component={Map}/>
-                <Tab.Screen name = "settings" component = {setting}/>
-              </Tab.Navigator>
-            </NavigationContainer>
-         {/* </ResturantContextProvider> */}
+         <Stack.Navigator
+      initialRouteName="Home"
+      screenOptions={{
+        headerMode: 'screen',
+        headerTintColor: '#4287f5',
+        headerStyle: { backgroundColor: Theme.colors.bg.secondary },
+      }}
+    >
+      <Stack.Screen
+        name="Home"
+        component={ResturantSignup}
+        options={{
+          title: 'Enter Resturant Details',
+        }}
+      />
+      <Stack.Screen
+        name="Details"
+        component={ResturantList}
+        options={{
+          title: 'Resturant Lists',
+        }}
+      />
+    </Stack.Navigator>
+         </NavigationContainer>
 
       </View>
      </SafeAreaView>

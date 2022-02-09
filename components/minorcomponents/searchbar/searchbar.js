@@ -165,7 +165,7 @@ const style = StyleSheet.create({
   justifyContent:"space-around",
   alignItems:"center",
   borderWidth:3,
-  borderColor:"red"
+  borderColor:"#91b4ed"
 
 },
 radiobtnselected:{
@@ -173,9 +173,9 @@ radiobtnselected:{
   width:"10%",
   flexDirection:"row",
   borderRadius: 40,
-  backgroundColor: "blue",
+  backgroundColor: "#4287f5",
   borderWidth:3,
-  borderColor:"red"
+  borderColor:"#91b4ed"
 },
 btntext:{
   color:"black",
@@ -186,115 +186,3 @@ btntext:{
 
 export default SearchBar;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import React, { useState } from 'react';
-// import {
-//   SafeAreaView,
-//   ScrollView,
-//   StatusBar,
-//   StyleSheet,
-//   Text,
-//   useColorScheme,
-//   View,
-//   TextInput
-// } from 'react-native';
-// // import { Icon } from 'react-native-vector-icons/EvilIcons';
-// import Icon from 'react-native-vector-icons/AntDesign';
-// import { Theme } from '../../../utils/theme/theme';
-
-// const SearchBar = ({namestate , addstate , ratingstate}) => {
-
-//   return (
-//     <SafeAreaView>
-//       <View style={style.mainveiw}>
-//       <TextInput
-//               placeholder='Enter resturant name'
-//               placeholderTextColor={"black"}
-//               style={style.inputfield}
-//               onChangeText={(a)=>namestate(a)}
-//               />
-           
-           
-            
-//               <TextInput
-//              placeholder='Enter resturant address'
-//              placeholderTextColor={"black"}
-//              style={style.inputfield}
-//              onChangeText={(b)=>addstate(b)}
-//               />
-           
-
-              
-           
-//               <TextInput
-//               placeholder='Enter rating '
-//               placeholderTextColor={"black"}
-//               style={style.inputfield}
-//               keyboardType='numeric'
-//               onChangeText={(c)=>ratingstate(c)}
-//               />
-//     </View>
-//     </SafeAreaView>
-//   )
-// }
-
-// const style = StyleSheet.create({
-//   mainveiw: {
-//     height: "90%",
-//     width: "100%",
-//     backgroundColor: Theme.colors.bg.secondary,
-//     marginTop: 2,
-//     borderRadius: 20,
-//     justifyContent: "space-evenly",
-//     alignItems: "flex-start",
-//   },
-
-//   inputfield:{
-//     height: "20%",
-//     width: "100%",
-//     backgroundColor: Theme.colors.bg.secondary,
-//     borderRadius: 20,
-//     flexDirection: "row",
-//     justifyContent: "flex-start",
-//     alignItems:"center",
-//     color:"black",
-//   },
-//   icon: {
-//     marginLeft: 10
-//   },
-//   input: {
-//     marginLeft: 10,
-//     width: "100%"
-//   }
-// })
-
-
-// export default SearchBar;

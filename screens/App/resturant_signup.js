@@ -56,7 +56,7 @@ rating:4,
 },
 ]
 
-const ResturantInfo = () => {
+const ResturantSignup = () => {
  
   
 const [name,setname]=useState('')
@@ -76,9 +76,6 @@ const[resturants,setresturants]=useState(DATA)
 // const updaterating = (r) =>{
 //   setrating(r)
 // }
-
-
-
 
 const UpdateText = (i, j) =>{
   if(i)
@@ -101,10 +98,6 @@ const Open = () =>{
 const Closed = () =>{
   setstatus(false)
 }
-// var radio_props =[
-//   {label:"Open" , value:true},
-//   {label:"Closed" , value:false}
-// ]
 
 
 const RegisterResturant = () =>{
@@ -125,14 +118,6 @@ const RegisterResturant = () =>{
     )
 
 
-    // setresturants( DATA => [...DATA,{
-    //   name:name,
-    //   address:address,
-    //   rating:rating,
-    //   photos:"",
-    //   isOpen:true, 
-    // }])
-
     console.log(DATA)
 
     setresturants(DATA)
@@ -140,6 +125,7 @@ const RegisterResturant = () =>{
     setaddress('')
     setrating(0)
     setstatus(null)
+    alert("Resturant Registerd")
 
   }
   else{
@@ -147,19 +133,12 @@ const RegisterResturant = () =>{
   }
 }
 
-
-  const CardRender = ({item}) =>{
-    return (<ResturantCard
-      name={item.name}
-      address={item.address}
-      photos={item.photos}
-      isOpen={item.isOpen}
-      rating={item.rating}
-
-    />)
-
-  }
-
+const ResturantDetails = ({navigation}) =>{
+  navigation.navigate(Details,{
+    resturants  
+  })
+  
+}
 //  ResturantContext= useContext(ResturantContext)
 
  return (
@@ -179,19 +158,20 @@ const RegisterResturant = () =>{
             ClosedStatus={Closed}
             /> 
 
-            <View style={styles.registerbtn}>
+          </View>
+        
+          <View style={styles.btns}>
+          <View style={styles.registerbtn}>
                <TouchableOpacity onPress={()=>RegisterResturant()}>
                    <Text>Register</Text>
                 </TouchableOpacity>
             </View>
-
-          </View>
-          <View style= {styles.Infoveiw}>
-            <FlatList
-            data={resturants}
-            renderItem={ CardRender}
-            keyExtractor={(item) => item.name}
-            />
+           
+            <View style={styles.registerbtn}>
+               <TouchableOpacity onPress={()=>ResturantDetails()}>
+                   <Text>Details</Text>
+                </TouchableOpacity>
+            </View>
           </View>
         </View>
      </SafeAreaView>
@@ -215,10 +195,16 @@ const RegisterResturant = () =>{
     alignItems:"center",
     justifyContent:"space-around",
   },
+  btns:{
+    height:"30%",
+    width:"100%",
+    flexDirection:"row",
+    justifyContent:"space-around"
+  },
   registerbtn:{
-    height:"13%",
+    height:"30%",
     width:"20%",
-    backgroundColor:"blue",
+    backgroundColor:"#4287f5",
     borderRadius:20,
     marginTop:10,
     alignItems:"center",
@@ -243,4 +229,4 @@ const RegisterResturant = () =>{
 
 
    
-export default ResturantInfo;
+export default ResturantSignup;
