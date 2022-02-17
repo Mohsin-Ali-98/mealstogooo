@@ -17,19 +17,33 @@ import ResturantCard from '../../components/minorcomponents/resturant_card/restu
 
 
 
-const ResturantList = (route) =>{
+const ResturantList = ({route,navigation}) =>{
 
-const {resturants, } = route.params
+  const { resturants } = route.params;
 
-    const CardRender = (resturants, {item}) =>{
-        return (<ResturantCard
-          name={resturants.item.name}
-          address={resturants.item.address}
-          photos={resturants.item.photos}
-          isOpen={resturants.item.isOpen}
-          rating={resturants.item.rating}
-    
-        />)
+
+const Details = (item)=>{
+  navigation.navigate('Details',{
+    name:item.name,
+   address:item.address,
+   photos:item.photos,
+   isOpen:item.isOpen,
+   rating:item.rating
+  })
+}
+
+    const CardRender = ({item}) =>{
+        return (
+          <TouchableOpacity   onPress={()=>Details(item)}>
+            <ResturantCard
+               name={item.name}
+               address={item.address}
+               photos={item.photos}
+               isOpen={item.isOpen}
+               rating={item.rating}
+          />
+          </TouchableOpacity>
+        )
     
       }
 
@@ -39,7 +53,8 @@ const {resturants, } = route.params
             <FlatList
             data={resturants}
             renderItem={ CardRender}
-            keyExtractor={(item) => item.name}
+            keyExtractor={(item) => item.name}  
+            style={style.cardview}          
             />
         </View>
     )
@@ -49,7 +64,15 @@ const style= StyleSheet.create({
 
     mainview:{
         height:"100%",
-        width:"100%"
+        width:"100%",
+        // alignSelf:"center",
+        alignItems:"center",
+        marginLeft:10
+      
+    },
+    cardview:{
+      height:"20%",
+      width:"80%",
     }
 })
 

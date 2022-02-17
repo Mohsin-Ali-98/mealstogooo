@@ -24,8 +24,8 @@ const DATA = [ {
   name : "Mcdonalds",
   address:"123 street",
   photos:
-    "https://wlxaj1j3fea9rr7r20slpixw-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Fast-food-combo-meal.jpg"
-   ,
+  "https://www.newfoodmagazine.com/wp-content/uploads/mcdonalds.jpg"  
+  ,
   isOpen:true, 
   rating:4,
 },
@@ -33,30 +33,30 @@ const DATA = [ {
 name : "KFC",
 address:"ABC street",
 photos:
-    "https://wlxaj1j3fea9rr7r20slpixw-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Fast-food-combo-meal.jpg"
-   ,
+    "https://images.unsplash.com/photo-1513639776629-7b61b0ac49cb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8a2ZjfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+    ,
 isOpen:true, 
-rating:4,
+rating:3,
 },{
 name :"Pizza hut",
 address:"Xyz street",
 photos:
-    "https://wlxaj1j3fea9rr7r20slpixw-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Fast-food-combo-meal.jpg"
-   ,
+"https://www.foodbusinessnews.net/ext/resources/2020/2/PizzaHutBoxMeal_Lead.jpg?t=1581088713&width=1080"   
+,
 isOpen:false, 
-rating:4,
+rating:2,
 },{
 name : "Shinwari",
 address:"789 street",
 photos:
-    "https://wlxaj1j3fea9rr7r20slpixw-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Fast-food-combo-meal.jpg"
-   ,
+"https://i.ytimg.com/vi/G_ayWIsNZIg/maxresdefault.jpg"    
+,
 isOpen:false, 
-rating:4,
+rating:1,
 },
 ]
 
-const ResturantSignup = () => {
+const ResturantSignup = ({navigation}) => {
  
   
 const [name,setname]=useState('')
@@ -109,7 +109,7 @@ const RegisterResturant = () =>{
         
         name:name,
         address:address,
-        photos:"https://wlxaj1j3fea9rr7r20slpixw-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Fast-food-combo-meal.jpg",
+        photos:"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Hyderabadi_Chicken_Biryani.jpg/800px-Hyderabadi_Chicken_Biryani.jpg",
         isOpen:status, 
         rating:rating,
         
@@ -133,9 +133,10 @@ const RegisterResturant = () =>{
   }
 }
 
-const ResturantDetails = ({navigation}) =>{
-  navigation.navigate(Details,{
-    resturants  
+const ResturantList = () =>{
+  navigation.navigate('List',{
+    // details: {resturants}
+    resturants
   })
   
 }
@@ -168,7 +169,7 @@ const ResturantDetails = ({navigation}) =>{
             </View>
            
             <View style={styles.registerbtn}>
-               <TouchableOpacity onPress={()=>ResturantDetails()}>
+               <TouchableOpacity onPress={()=>ResturantList()}>
                    <Text>Details</Text>
                 </TouchableOpacity>
             </View>
@@ -211,19 +212,8 @@ const ResturantDetails = ({navigation}) =>{
     justifyContent:"center",
   },
 
-  textview:{
-    color:"black"
-  },
+ 
 
-  Infoveiw:{
-      height:"40%",
-      width:"100%",
-      backgroundColor:Theme.colors.bg.primary,
-      alignItems:"center",
-      // alignSelf:"center",
-      marginLeft:20
-      
-  }
   
 })  
 

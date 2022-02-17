@@ -32,17 +32,7 @@ import ResturantContextProvider from "../mealstogooo/services/resturants/restura
 import ResturantSignup from './screens/App/resturant_signup';
 import ResturantList from './screens/App/resturantlist';
 import { Theme  } from './utils/theme/theme';
-
-
-const Home = () =>{
-  return <Text>Hello FROM HOME</Text>
-}
-const Map = () => {
-  return <Text> hELLO  FROM MAP</Text>
-}
-const setting = () =>{
-  return<Text>setting</Text>
-}
+import ResturantDetails from './screens/App/resturantdetails';
 
 
 const Stack = createStackNavigator();
@@ -66,14 +56,21 @@ const App = () => {
         name="Home"
         component={ResturantSignup}
         options={{
-          title: 'Enter Resturant Details',
+          title: 'Enter Resturant Info',
+        }}
+      />
+      <Stack.Screen
+        name="List"
+        component={ResturantList}
+        options={{
+          title: 'Resturant Lists',
         }}
       />
       <Stack.Screen
         name="Details"
-        component={ResturantList}
+        component={ResturantDetails}
         options={{
-          title: 'Resturant Lists',
+          title: 'Resturant Details',
         }}
       />
     </Stack.Navigator>
